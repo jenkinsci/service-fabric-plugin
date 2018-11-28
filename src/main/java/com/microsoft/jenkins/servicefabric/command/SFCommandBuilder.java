@@ -33,7 +33,7 @@ public class SFCommandBuilder {
     private static final String SF_APPLICATION_CREATE =
             "sfctl application create --app-name {appName} --app-type {appType} --app-version {appVersion}";
     private static final String SF_APPLICATION_UPGRADE =
-            "sfctl application upgrade --application-name {appName} --application-version {appVersion} --parameters {}"
+            "sfctl application upgrade --application-id {appId} --application-version {appVersion} --parameters {}"
             + " --mode Monitored";
     private static final String SF_APPLICATION_REMOVE =
             "sfctl application delete --application-id {appId}";
@@ -99,7 +99,7 @@ public class SFCommandBuilder {
         if (tmpString.lastIndexOf('/', tmpString.length() - 1) != -1) {
             applicationPath = tmpString.substring(0, tmpString.lastIndexOf('/', tmpString.length() - 1));
         } else {
-            applicationPath = "..";
+            applicationPath = ".";
         }
         outputCommand += "&& cd " + applicationPath;
 
