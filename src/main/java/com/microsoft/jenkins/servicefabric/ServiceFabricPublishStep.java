@@ -408,6 +408,8 @@ public class ServiceFabricPublishStep extends Step implements Serializable {
 
         /**
          * Check to make sure that the application name begins with "fabric:/".
+         * @param value ServiceFabric application name.
+         * @return FormValidation result
          */
         public FormValidation doCheckApplicationName(@QueryParameter String value) {
             String error = checkApplicationName(value);

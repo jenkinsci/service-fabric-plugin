@@ -27,13 +27,13 @@ public class SFCommandBuilder {
             "sfctl cluster select --endpoint https://{clusterIP}:19080 "
                     + "--key {clientKey} --cert {clientCert} --no-verify";
     private static final String SF_COPY =
-            "sfctl application upload --path {appName} --show-progress";
+            "sfctl application upload --path {appPath} --show-progress";
     private static final String SF_REGISTER_TYPE =
             "sfctl application provision --application-type-build-path {appName}";
     private static final String SF_APPLICATION_CREATE =
             "sfctl application create --app-name {appName} --app-type {appType} --app-version {appVersion}";
     private static final String SF_APPLICATION_UPGRADE =
-            "sfctl application upgrade --application-name {appName} --application-version {appVersion} --parameters {}"
+            "sfctl application upgrade --application-id {appId} --application-version {appVersion} --parameters {}"
             + " --mode Monitored";
     private static final String SF_APPLICATION_REMOVE =
             "sfctl application delete --application-id {appId}";
@@ -66,6 +66,7 @@ public class SFCommandBuilder {
 
     /**
      * Build and return the output command.
+     * @return The series of shell commands which need to run to create/upgrade the application
      */
     public String buildCommands() {
 
@@ -94,17 +95,10 @@ public class SFCommandBuilder {
         // make the command: move into the application package folder
         // Getting application path from the appilcation-manifest path input in
         // Jenkins portal
-        String tmpString = manifestPath.substring(0, manifestPath.lastIndexOf('/', manifestPath.length() - 1));
-        String applicationPath;
-        if (tmpString.lastIndexOf('/', tmpString.length() - 1) != -1) {
-            applicationPath = tmpString.substring(0, tmpString.lastIndexOf('/', tmpString.length() - 1));
-        } else {
-            applicationPath = "..";
-        }
-        outputCommand += "&& cd " + applicationPath;
+        String applicationPath = manifestPath.substring(0, manifestPath.lastIndexOf('/', manifestPath.length() - 1));
 
         // add on the different commands: copy -> register -> create
-        outputCommand += " && " + (SF_COPY.replace("{appName}", appName.replace("fabric:/", "")));
+        outputCommand += " && " + (SF_COPY.replace("{appPath}", applicationPath));
         outputCommand += " && " + (SF_REGISTER_TYPE.replace("{appName}", appName.replace("fabric:/", "")));
 
         outputCommand += " && " + createUpgradeOrInstallCommand(appId, appName, appType, targetVersion);
