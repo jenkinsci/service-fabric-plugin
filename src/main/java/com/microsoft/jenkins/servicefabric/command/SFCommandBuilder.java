@@ -9,6 +9,7 @@ import hudson.FilePath;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -150,6 +151,7 @@ public class SFCommandBuilder {
         DocumentBuilder builder;
         Document applicationManifest;
         try {
+            factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
             builder = factory.newDocumentBuilder();
         } catch (ParserConfigurationException e) {
             LOGGER.log(Level.SEVERE, "ParserConfigurationException:" + e);
