@@ -22,7 +22,7 @@
         <jenkins.version>2.60.3</jenkins.version>
         <java.level>8</java.level>
         <jackson.version>2.10.1</jackson.version>
-        <guava.version>24.1.1-jre</guava.version>
+        <guava.version>29.0-jre</guava.version>
         <azure-commons.version>0.2.11</azure-commons.version>
         <azure-credentials.version>1.6.1</azure-credentials.version>
         <azure-sdk.version>1.19.0</azure-sdk.version>
