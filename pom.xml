@@ -19,7 +19,7 @@
 
     <properties>
         <!-- Baseline Jenkins version you use to build and test the plugin. Users must have this version or newer to run. -->
-        <jenkins.version>2.346.3</jenkins.version>
+        <jenkins.version>2.414.3</jenkins.version>
         <jackson.version>2.10.1</jackson.version>
         <guava.version>29.0-jre</guava.version>
         <azure-commons.version>0.2.11</azure-commons.version>
@@ -90,7 +90,6 @@
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>structs</artifactId>
-            <version>324.va_f5d6774f3a_d</version>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
@@ -176,8 +175,8 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.tools.bom</groupId>
-        <artifactId>bom-2.346.x</artifactId>
-        <version>1763.v092b_8980a_f5e</version>
+        <artifactId>bom-2.414.x</artifactId>
+        <version>2643.vfa_93ff299d20</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
