@@ -5,6 +5,7 @@
  */
 package com.microsoft.jenkins.servicefabric;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.Extension;
 import hudson.FilePath;
 import hudson.Launcher;
@@ -18,7 +19,6 @@ import hudson.tasks.Recorder;
 import jenkins.tasks.SimpleBuildStep;
 import org.kohsuke.stapler.DataBoundConstructor;
 
-import javax.annotation.Nonnull;
 import java.io.IOException;
 
 /**
@@ -38,10 +38,10 @@ public class ServiceFabricPublisher extends Recorder implements SimpleBuildStep 
     }
 
     @Override
-    public void perform(@Nonnull Run<?, ?> run,
-                        @Nonnull FilePath workspace,
-                        @Nonnull Launcher launcher,
-                        @Nonnull TaskListener listener) throws InterruptedException, IOException {
+    public void perform(@NonNull Run<?, ?> run,
+                        @NonNull FilePath workspace,
+                        @NonNull Launcher launcher,
+                        @NonNull TaskListener listener) throws InterruptedException, IOException {
         publishStep.runStep(null, run, workspace, launcher, listener);
     }
 
