@@ -130,6 +130,11 @@
             <artifactId>jackson-core</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.5</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -231,7 +236,6 @@
                 <groupId>org.jenkins-ci.tools</groupId>
                 <artifactId>maven-hpi-plugin</artifactId>
                 <configuration>
-                    <minimumJavaVersion>1.8</minimumJavaVersion>
                     <pluginFirstClassLoader>true</pluginFirstClassLoader>
                     <!--
                     Mask all the Azure SDK related classes so that it will not affected by the SDK change in the
