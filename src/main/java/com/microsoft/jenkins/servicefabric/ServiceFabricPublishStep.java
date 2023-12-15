@@ -17,6 +17,7 @@ import com.microsoft.jenkins.azurecommons.telemetry.AppInsightsUtils;
 import com.microsoft.jenkins.servicefabric.command.SFCommandBuilder;
 import com.microsoft.jenkins.servicefabric.util.AzureHelper;
 import com.microsoft.jenkins.servicefabric.util.Constants;
+import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.AbortException;
 import hudson.EnvVars;
 import hudson.Extension;
@@ -43,8 +44,7 @@ import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.DataBoundSetter;
 import org.kohsuke.stapler.QueryParameter;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import edu.umd.cs.findbugs.annotations.Nullable;
 import java.io.IOException;
 import java.io.Serializable;
 import java.net.MalformedURLException;
@@ -106,10 +106,10 @@ public class ServiceFabricPublishStep extends Step implements Serializable {
 
 
     public void runStep(@Nullable StepContext context,
-                        @Nonnull Run<?, ?> run,
-                        @Nonnull FilePath workspace,
-                        @Nonnull Launcher launcher,
-                        @Nonnull TaskListener listener) throws InterruptedException, IOException {
+                        @NonNull Run<?, ?> run,
+                        @NonNull FilePath workspace,
+                        @NonNull Launcher launcher,
+                        @NonNull TaskListener listener) throws InterruptedException, IOException {
         String buildId = AppInsightsUtils.hash(run.getUrl());
         AzureServiceFabricPlugin.sendEvent("StartDeploy",
                 Constants.AI_RUN, buildId);
@@ -126,10 +126,10 @@ public class ServiceFabricPublishStep extends Step implements Serializable {
     }
 
     private void doRunStep(@Nullable StepContext context,
-                           @Nonnull Run<?, ?> run,
-                           @Nonnull FilePath workspace,
-                           @Nonnull Launcher launcher,
-                           @Nonnull TaskListener listener) throws InterruptedException, IOException {
+                           @NonNull Run<?, ?> run,
+                           @NonNull FilePath workspace,
+                           @NonNull Launcher launcher,
+                           @NonNull TaskListener listener) throws InterruptedException, IOException {
         String buildId = AppInsightsUtils.hash(run.getUrl());
 
         String cfgType = getConfigureType();
@@ -344,7 +344,7 @@ public class ServiceFabricPublishStep extends Step implements Serializable {
             return "azureServiceFabricPublish";
         }
 
-        @Nonnull
+        @NonNull
         @Override
         public String getDisplayName() {
             return "Deploy Service Fabric Project";
