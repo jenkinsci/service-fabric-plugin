@@ -1,5 +1,9 @@
 # Jenkins Plugin for Linux Azure Service Fabric
 
+## Deprecated
+
+This plugin is deprecated.  It should be removed from Jenkins controllers and replaced with Azure command line interface calls to perform the same actions.
+
 ## Installation
 You can install/update this plugin in Jenkins update center (Manage Jenkins -> Manage Plugins, search Service Fabric Jenkins Plugin).
 
